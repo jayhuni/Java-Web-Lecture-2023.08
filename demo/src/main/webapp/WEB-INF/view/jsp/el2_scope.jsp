@@ -7,9 +7,8 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
 	<title>EL 표현언어</title>
-	<style>td { padding: 3px; }</style>
+	<style>td, th { padding: 3px; }</style>
 </head>
 <body style="margin: 40px;">
 	<h1>스코프</h1>
