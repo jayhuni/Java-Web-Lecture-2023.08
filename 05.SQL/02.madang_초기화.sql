@@ -17,15 +17,15 @@ INSERT INTO Customer VALUES (4, '추신수', '미국 클리블랜드', '000-8000
 INSERT INTO Customer VALUES (5, '박세리', '대한민국 대전',  NULL);
 
 -- 주문(Orders) 테이블의 책값은 할인 판매를 가정함
-INSERT INTO Orders VALUES (1, 6000, TO_DATE('2014-07-01','yyyy-mm-dd'), 1, 1);
+INSERT INTO Orders VALUES (1, 6000, TO_DATE('2014-07-01','yyyy-mm-dd'), 1, 1); 
 INSERT INTO Orders VALUES (2, 21000, TO_DATE('2014-07-03','yyyy-mm-dd'), 1, 3);
-INSERT INTO Orders VALUES (3, 8000, TO_DATE('2014-07-03','yyyy-mm-dd'), 2, 5);
-INSERT INTO Orders VALUES (4, 6000, TO_DATE('2014-07-04','yyyy-mm-dd'), 3, 6);
+INSERT INTO Orders VALUES (3, 8000, TO_DATE('2014-07-03','yyyy-mm-dd'), 2, 5); 
+INSERT INTO Orders VALUES (4, 6000, TO_DATE('2014-07-04','yyyy-mm-dd'), 3, 6); 
 INSERT INTO Orders VALUES (5, 20000, TO_DATE('2014-07-05','yyyy-mm-dd'), 4, 7);
 INSERT INTO Orders VALUES (6, 12000, TO_DATE('2014-07-07','yyyy-mm-dd'), 1, 2);
-INSERT INTO Orders VALUES (7, 13000, TO_DATE('2014-07-07','yyyy-mm-dd'), 4, 8);
-INSERT INTO Orders VALUES (8, 12000, TO_DATE('2014-07-08','yyyy-mm-dd'), 3, 10);
-INSERT INTO Orders VALUES (9, 7000, TO_DATE('2014-07-09','yyyy-mm-dd'), 2, 10);
+INSERT INTO Orders VALUES (7, 13000, TO_DATE( '2014-07-07','yyyy-mm-dd'), 4, 8);
+INSERT INTO Orders VALUES (8, 12000, TO_DATE('2014-07-08','yyyy-mm-dd'), 3, 10); 
+INSERT INTO Orders VALUES (9, 7000, TO_DATE('2014-07-09','yyyy-mm-dd'), 2, 10); 
 INSERT INTO Orders VALUES (10, 13000, TO_DATE('2014-07-10','yyyy-mm-dd'), 3, 8);
 
 COMMIT;

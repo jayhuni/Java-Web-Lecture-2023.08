@@ -32,7 +32,7 @@ public class Ex11_CustomerTest {
 //		List<Customer> list = cDao.getCustomerListByFieldAndQuery("address", "대한민국");
 		
 		// 이름에 '박'이 들어가는 고객 명단
-		List<Customer> list = cDao.getCustomerListByFieldAndQuery("name", "박");
+		List<Customer> list = cDao.getCustomerListByFieldAndQuery("name", "");
 		for (Customer c2: list)
 			System.out.println(c2);
 	}
