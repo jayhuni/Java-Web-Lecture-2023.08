@@ -8,17 +8,18 @@ public class Book {
 	
 	public Book() { }
 	public Book(int bookId, String bookname, String publisher, int price) {
-		super();
 		this.bookId = bookId;
 		this.bookname = bookname;
 		this.publisher = publisher;
 		this.price = price;
 	}
+	
 	@Override
 	public String toString() {
 		return "Book [bookId=" + bookId + ", bookname=" + bookname + ", publisher=" + publisher + ", price=" + price
 				+ "]";
 	}
+	
 	public int getBookId() {
 		return bookId;
 	}
@@ -43,6 +44,4 @@ public class Book {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	
-
 }
