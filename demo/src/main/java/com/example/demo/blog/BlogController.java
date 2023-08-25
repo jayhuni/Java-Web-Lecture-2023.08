@@ -9,18 +9,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/blog")
 public class BlogController {
 //	private BlogDao bDao = new BlogDao();
-	@Autowired private BlogDao bDao;		// Spring에서 BlogDao() 객체를 생성해서 inject해준다.
+//	@Autowired private BlogDao bDao;		// Spring에서 BlogDao() 객체를 생성해서 inject해준다.
+	@Autowired private BlogService blogService;
 	
 	@GetMapping("/list")
-	public String list(Model model) {
-		List<Blog> list = bDao.getBlogList("title", "");
+	public String list(@RequestParam(name="f", defaultValue="title") String field, 
+						@RequestParam(name="q", defaultValue="") String query, 
+						Model model) {
+		List<Blog> list = blogService.getBlogList(field, query);
 		model.addAttribute("blogList", list);
 		model.addAttribute("menu", "blog");
+		model.addAttribute("field", field);
+		model.addAttribute("query", query);
 		return "blog/list";
 	}
 	
@@ -34,15 +40,15 @@ public class BlogController {
 	public String writeProc(Blog blog) {
 //		public String writeProc(String penName, String title, String content) {
 //		Blog blog = new Blog(penName, title, content);
-		bDao.insertBlog(blog);
+		blogService.insertBlog(blog);
 		return "redirect:/blog/list";
 	}
 	
 	@GetMapping("/detail/{bid}")
 	public String detail(@PathVariable int bid, String option, Model model) {
 		if (option == null || option.equals(""))
-			bDao.increaseViewCount(bid);		// DNI option이 설정되어 있으면 조회수를 증가시키지 않는다.
-		Blog blog = bDao.getBlog(bid);
+			blogService.increaseViewCount(bid);		// DNI option이 설정되어 있으면 조회수를 증가시키지 않는다.
+		Blog blog = blogService.getBlog(bid);
 		model.addAttribute("blog",blog);
 		model.addAttribute("menu", "blog");
 		return "blog/detail";
@@ -50,7 +56,7 @@ public class BlogController {
 	
 	@GetMapping("/update/{bid}")
 	public String updateForm(@PathVariable int bid, Model model) {
-		Blog blog = bDao.getBlog(bid);
+		Blog blog = blogService.getBlog(bid);
 		model.addAttribute("blog",blog);
 		model.addAttribute("menu", "blog");
 		return "blog/update";
@@ -60,7 +66,7 @@ public class BlogController {
 	public String updateProc(Blog blog) {
 //	public String updateProc(int bid, String penName, String title, String content){ 
 //		Blog blog = new blog(bid, penName, title, content);
-		bDao.updateBlog(blog);
+		blogService.updateBlog(blog);
 		return "redirect:/blog/detail/" + blog.getBid() + "?option=DNI";
 	}
 	
@@ -73,7 +79,7 @@ public class BlogController {
 	
 	@GetMapping("/deleteConfirm/{bid}")
 	public String deleteConfirm(@PathVariable int bid) {
-		bDao.deleteBlog(bid);
+		blogService.deleteBlog(bid);
 		return "redirect:/blog/list/";
 	}
 	

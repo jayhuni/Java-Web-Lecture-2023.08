@@ -122,7 +122,7 @@ public class BlogDao {
 	}
 	
 	public void increaseViewCount(int bid) {
-		String sql = " update blog set viewCount=viewCount+1 where bid=?";
+		String sql = "update blog set viewCount=viewCount+1 where bid=?";
 		try {
 			Connection conn =  DriverManager.getConnection(url, username, password);
 			PreparedStatement pstmt = conn.prepareStatement(sql);
